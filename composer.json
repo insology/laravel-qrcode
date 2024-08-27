@@ -1,13 +1,13 @@
 {
     "name": "insologystudio/laravel-qrcode",
-    "description": "Simple QrCode is a QR code generator made for Laravel.",
-    "keywords": ["qrcode", "laravel", "simple", "generator", "wrapper"],
-    "homepage": "https://www.simplesoftware.io/#/docs/simple-qrcode",
+    "description": "A Qrcode generator made for Laravel.",
+    "keywords": ["qrcode", "laravel", "generator", "wrapper"],
+    "homepage": "https://github.com/insology/laravel-qrcode",
     "license" : "MIT",
     "authors": [
         {
-            "name": "Simple Software LLC",
-            "email": "support@simplesoftware.io"
+            "name": "Insology Studio",
+            "email": "info@insology.com"
         }
     ],
     "require": {
