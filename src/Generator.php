@@ -2,33 +2,34 @@
 
 namespace InsologyStudio\QrCode;
 
-use BaconQrCode\Common\ErrorCorrectionLevel;
-use BaconQrCode\Encoder\Encoder;
-use BaconQrCode\Exception\WriterException;
-use BaconQrCode\Renderer\Color\Alpha;
-use BaconQrCode\Renderer\Color\ColorInterface;
-use BaconQrCode\Renderer\Color\Rgb;
-use BaconQrCode\Renderer\Eye\EyeInterface;
-use BaconQrCode\Renderer\Eye\ModuleEye;
-use BaconQrCode\Renderer\Eye\SimpleCircleEye;
-use BaconQrCode\Renderer\Eye\SquareEye;
-use BaconQrCode\Renderer\Image\EpsImageBackEnd;
-use BaconQrCode\Renderer\Image\ImageBackEndInterface;
-use BaconQrCode\Renderer\Image\ImagickImageBackEnd;
-use BaconQrCode\Renderer\Image\SvgImageBackEnd;
-use BaconQrCode\Renderer\ImageRenderer;
-use BaconQrCode\Renderer\Module\DotsModule;
-use BaconQrCode\Renderer\Module\ModuleInterface;
-use BaconQrCode\Renderer\Module\RoundnessModule;
-use BaconQrCode\Renderer\Module\SquareModule;
-use BaconQrCode\Renderer\RendererStyle\EyeFill;
-use BaconQrCode\Renderer\RendererStyle\Fill;
-use BaconQrCode\Renderer\RendererStyle\Gradient;
-use BaconQrCode\Renderer\RendererStyle\GradientType;
-use BaconQrCode\Renderer\RendererStyle\RendererStyle;
 use BaconQrCode\Writer;
 use BadMethodCallException;
 use InvalidArgumentException;
+use BaconQrCode\Encoder\Encoder;
+use BaconQrCode\Renderer\Color\Rgb;
+use BaconQrCode\Renderer\Color\Alpha;
+use BaconQrCode\Renderer\Eye\ModuleEye;
+use BaconQrCode\Renderer\Eye\PointyEye;
+use BaconQrCode\Renderer\Eye\SquareEye;
+use BaconQrCode\Renderer\ImageRenderer;
+use BaconQrCode\Exception\WriterException;
+use BaconQrCode\Renderer\Eye\EyeInterface;
+use BaconQrCode\Renderer\Module\DotsModule;
+use BaconQrCode\Common\ErrorCorrectionLevel;
+use BaconQrCode\Renderer\RendererStyle\Fill;
+use BaconQrCode\Renderer\Eye\SimpleCircleEye;
+use BaconQrCode\Renderer\Module\SquareModule;
+use BaconQrCode\Renderer\Color\ColorInterface;
+use BaconQrCode\Renderer\Image\EpsImageBackEnd;
+use BaconQrCode\Renderer\Image\SvgImageBackEnd;
+use BaconQrCode\Renderer\RendererStyle\EyeFill;
+use BaconQrCode\Renderer\Module\ModuleInterface;
+use BaconQrCode\Renderer\Module\RoundnessModule;
+use BaconQrCode\Renderer\RendererStyle\Gradient;
+use BaconQrCode\Renderer\Image\ImagickImageBackEnd;
+use BaconQrCode\Renderer\RendererStyle\GradientType;
+use BaconQrCode\Renderer\Image\ImageBackEndInterface;
+use BaconQrCode\Renderer\RendererStyle\RendererStyle;
 use InsologyStudio\Qrcode\DataTypes\DataTypeInterface;
 
 class Generator
@@ -334,8 +335,8 @@ class Generator
      */
     public function eye(string $style): self
     {
-        if (! in_array($style, ['square', 'circle'])) {
-            throw new InvalidArgumentException("\$style must be square or circle. {$style} is not a valid eye style.");
+        if (! in_array($style, ['square', 'circle', 'pointy'])) {
+            throw new InvalidArgumentException("\$style must be square, pointy or circle. {$style} is not a valid eye style.");
         }
 
         $this->eyeStyle = $style;
@@ -504,6 +505,10 @@ class Generator
             return SimpleCircleEye::instance();
         }
 
+        if ($this->eyeStyle === 'pointy') {
+            return PointyEye::instance();
+        }
+         
         return new ModuleEye($this->getModule());
     }
 
