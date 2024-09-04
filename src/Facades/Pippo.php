@@ -39,7 +39,7 @@ use InsologyStudio\QrCode\Generator;
  *
  * @see Generator
  */
-class QrCode extends Facade
+class Pippo extends Facade
 {
     /**
      * Get the registered name of the component.

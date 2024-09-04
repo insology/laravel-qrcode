@@ -1,6 +1,6 @@
 {
     "name": "insologystudio/laravel-qrcode",
-    "description": "A Qrcode generator made for Laravel.",
+    "description": "A QrCode generator made for Laravel.",
     "keywords": ["qrcode", "laravel", "generator", "wrapper"],
     "homepage": "https://github.com/insology/laravel-qrcode",
     "license" : "MIT",
@@ -25,7 +25,7 @@
     },
     "autoload": {
         "psr-4": {
-            "InsologyStudio\\Qrcode\\": "src"
+            "InsologyStudio\\QrCode\\": "src"
         }
     },
     "scripts": {
@@ -34,10 +34,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "InsologyStudio\\Qrcode\\QrCodeServiceProvider"
+                "InsologyStudio\\QrCode\\QrCodeServiceProvider"
             ],
             "aliases": {
-                "QrCode": "InsologyStudio\\Qrcode\\Facades\\QrCode"
+                "QrCode": "InsologyStudio\\QrCode\\Facades\\QrCode"
             }
         }
     }

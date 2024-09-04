@@ -1,6 +1,6 @@
 <?php
 
-namespace InsologyStudio\Qrcode\DataTypes;
+namespace InsologyStudio\QrCode\DataTypes;
 
 interface DataTypeInterface
 {
